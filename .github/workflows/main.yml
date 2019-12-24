@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - name: git-ftp push
+    - name: git-ftp init
       uses: sebastianpopp/git-ftp-action@releases/v2
       with:
         url: "beyahfitness.com"
