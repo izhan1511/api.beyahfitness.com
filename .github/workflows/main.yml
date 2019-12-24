@@ -1,15 +1,11 @@
-image: samueldebruyn/debian-git
-
-pipelines:
-
-  default:
-
-    - step:
-
-        script:
-
-          - apt-get update
-
-          - apt-get -qq install git-ftp
-
-          - git ftp push --user 'api@beyahfitness.com' --passwd 'api@beyahfitness.com' 'beyahfitness.com'
+ name: git-ftp-action
+  uses: sebastianpopp/git-ftp-action@2.1.0
+  with:
+    # URL
+    url: beyahfitness.com
+    # FTP login name
+    user: api@beyahfitness.com
+    # FTP password
+    password: api@beyahfitness.com
+    # Specifies a local directory to sync from as if it were the git project root path.
+    #syncroot: # optional, default is .
