@@ -6,6 +6,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
+    - name: apt-get update
+      uses: sebastianpopp/git-ftp-action@releases/v2
+      with:
+        url: "beyahfitness.com"
+        user: ${{ secrets.FTP_USER }}
+        password: ${{ secrets.FTP_PWD }}
     - name: apt-get -qq install git-ftp
       uses: sebastianpopp/git-ftp-action@releases/v2
       with:
