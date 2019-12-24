@@ -9,7 +9,7 @@ jobs:
     - name: FTP-Deploy-Action
       uses: SamKirkland/FTP-Deploy-Action@2.0.0
       env:
-        FTP_SERVER: ftp.beyahfitness.com
+        FTP_SERVER: beyahfitness.com
         FTP_USERNAME: ${{ secrets.FTP_USER }}
         FTP_PASSWORD: ${{ secrets.FTP_PWD }}
         ARGS: --delete
