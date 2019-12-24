@@ -1,9 +1,12 @@
-- name: FTP Deploy
-  uses: SamKirkland/FTP-Deploy-Action@2.0.0
+- name: git-ftp-action
+  uses: sebastianpopp/git-ftp-action@2.1.0
   with:
-    # FTP server name (you may need to specify a port)
-    ftp_server: beyahfitness.com
-    # FTP account username
-    ftp_username: api@beyahfitness.com
-    # FTP account password
-    ftp_password: api@beyahfitness.com
+    # URL
+    url: beyahfitness.com
+    # FTP login name
+    user: api@beyahfitness.com
+    # FTP password
+    password: api@beyahfitness.com
+    # Specifies a local directory to sync from as if it were the git project root path.
+    syncroot: # optional, default is .
+
