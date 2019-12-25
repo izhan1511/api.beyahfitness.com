@@ -1,9 +1,16 @@
-- name: FTP Deploy
-  uses: SamKirkland/FTP-Deploy-Action@2.0.0
-  with:
-    # FTP server name (you may need to specify a port)
-    ftp_server: beyahfitness.com
-    # FTP account username
-    ftp_username: api@beyahfitness.com
-    # FTP account password
-    ftp_password: api@beyahfitness.com
+on: push
+name: Publish Website
+jobs:
+  FTP-Deploy-Action:
+    name: FTP-Deploy-Action
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: FTP-Deploy-Action
+      uses: SamKirkland/FTP-Deploy-Action@2.0.0
+      env:
+        FTP_SERVER: beyahfitness.com
+        FTP_USERNAME: 'api@beyahfitness.com'
+        FTP_PASSWORD: ${{ secrets.FTP_PWD }}
+        ARGS: --delete 
+        # --delete arg will delete files on the server if you've deleted them in git
