@@ -14,5 +14,3 @@ jobs:
         FTP_PASSWORD: ${{ secrets.FTP_PWD }}
         ARGS: --delete 
         # --delete arg will delete files on the server if you've deleted them in git
-    - name: Slack Notify
-      uses: rtCamp/action-slack-notify@v1.0.0
