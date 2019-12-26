@@ -18,7 +18,7 @@ class UserController extends Controller
          ];
 
         $customMessages = [
-             'required' => 'Please fill attribute :attribute'
+             'required' => 'Username / email / password not found'
         ];
         $this->validate($request, $rules, $customMessages);
 
