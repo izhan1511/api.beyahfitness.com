@@ -20,7 +20,7 @@ class UserController extends Controller
         $customMessages = [
              'required' => 'Username / email / password not found'
         ];
-        $this->validate($request, $rules, $customMessages);
+        // $this->validate($request, $rules, $customMessages);
 
         try {
             $hasher = app()->make('hash');
@@ -43,7 +43,7 @@ class UserController extends Controller
             return response($res, 200);
         } catch (\Illuminate\Database\QueryException $ex) {
             $res['status'] = false;
-            $res['message'] = $ex->getMessage();
+            $res['message'] = 'Username / email / password not found';
             return response($res, 500);
         }
     }
