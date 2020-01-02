@@ -62,9 +62,9 @@ class workoutController extends Controller
         return workoutcategory::all();
     }
 
-    public function showCat(request $request)
+    public function showCat()
     {
-        return workoutcategory::find($request->id);
+        return workoutcategory::all();
     }
 
     public function wvUserLogs(request $request){

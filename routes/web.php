@@ -21,7 +21,8 @@ $router->get('/user', ['middleware' => 'auth', 'uses' =>  'UserController@get_us
 $router->group(['middleware' => 'auth', 'uses' =>  'UserController@get_user'], function () use ($router) {
     //Workout Category
     $router->post('/workoutcategory', 'workoutController@storeCat');
-    $router->post('/getworkoutcategory', 'workoutController@showCat');
+    $router->get('/getworkoutcategory', 'workoutController@showCat');
+    // $router->get('/getworkoutcategory', 'workoutController@showCat');
     //Workout Videos
     $router->post('/workoutvideos', 'workoutController@store');
     $router->get('wvcat','workoutController@showbyCat');
