@@ -18,6 +18,10 @@ $router->post('/login', 'LoginController@login');
 $router->post('/register', 'UserController@register');
 $router->get('/user', ['middleware' => 'auth', 'uses' =>  'UserController@get_user']);
 
+$router->post('/password/reset-request', 'RequestPasswordController@sendResetLinkEmail');
+$router->post('/password/reset', [ 'as' => 'password.reset', 'uses' => 'ResetPasswordController@reset' ]);
+
+
 $router->group(['middleware' => 'auth', 'uses' =>  'UserController@get_user'], function () use ($router) {
     //Workout Category
     $router->post('/workoutcategory', 'workoutController@storeCat');
@@ -36,5 +40,8 @@ $router->group(['middleware' => 'auth', 'uses' =>  'UserController@get_user'], f
     //blog post
     $router->post('blog','blogController@blogStore');
     $router->get('blogall','blogController@blogAll');
+
+
+    $router->get('logout','UserController@logout');
 
 });

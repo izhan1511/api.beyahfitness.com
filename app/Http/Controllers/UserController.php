@@ -63,4 +63,24 @@ class UserController extends Controller
           return response($res);
         }
     }
+
+    public function logout(Request $request) {
+		// remove the api_token, when logging out
+        $user = User::where('api_token',$request->api_token)->first();
+        if($user){
+            $user->api_token = '';
+            $user->save();
+
+            return [
+                'status' => 'success',
+                'message' => 'Logout successfully.'
+            ];
+        }
+
+		return [
+			'status' => 'Error',
+			'message' => 'Token not exist.'
+		];
+
+	}
 }

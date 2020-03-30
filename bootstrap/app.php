@@ -98,10 +98,25 @@ $app->router->group([
 });
 
 $app->withFacades();
+$app->configure('services');
+$app->configure('mail');
 $app->withEloquent();
+
 $app->routeMiddleware([
     'auth' => App\Http\Middleware\Authenticate::class,
 ]);
 $app->register(App\Providers\AuthServiceProvider::class);
+
+$app->register(Illuminate\Mail\MailServiceProvider::class);
+$app->alias('mailer', Illuminate\Contracts\Mail\Mailer::class);
+
+$app->register(Illuminate\Auth\Passwords\PasswordResetServiceProvider::class);
+$app->register(Illuminate\Notifications\NotificationServiceProvider::class);
+
+
+// $app->alias('mailer', Illuminate\Mail\Mailer::class);
+// $app->alias('mailer', Illuminate\Contracts\Mail\Mailer::class);
+// $app->alias('mailer', Illuminate\Contracts\Mail\MailQueue::class);
+
 
 return $app;
