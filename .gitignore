@@ -3,3 +3,6 @@
 Homestead.json
 Homestead.yaml
 .env
+
+#Only Include these specific directories and subdirectories:
+!vendor\illuminate\auth\Notifications\*
