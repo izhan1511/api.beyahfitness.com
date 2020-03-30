@@ -110,7 +110,10 @@ trait ResetsPasswords
 
         event(new PasswordReset($user));
 
-        $this->guard()->login($user);
+        return response()->json([
+            'success'=>true
+        ]);
+        // $this->guard()->login($user);
     }
 
     /**
