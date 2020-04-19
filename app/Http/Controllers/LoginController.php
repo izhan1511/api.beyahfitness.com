@@ -5,6 +5,9 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Hash;
 use App\User;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
+
 
 class LoginController extends Controller
 {
@@ -63,5 +66,40 @@ class LoginController extends Controller
             $res['message'] = $ex->getMessage();
             return response($res, 500);
         }
+    }
+
+    public function forget(Request $request){
+        $data=$request->all();
+        $userDetails = User::where('email', $data['email'])->first();
+        // dd($userDetails);
+        if($userDetails == null){
+            $res['status'] = false;
+            $res['message'] = "Email doesn't Exist";
+            return response($res, 500);
+        }
+        $hasher = app()->make('hash');
+        $random_password = $this->randomPassword(6);
+        $new_password = $hasher->make($random_password);
+        User::where('email', $data['email'])->update(['password'=>$new_password]);
+        $data = array(
+                'email'=> $userDetails->email,
+                'name'=> $userDetails->name,
+                'password' => $random_password
+        );
+
+        Mail::send('auth.emails.forget', $data, function($message) use($data) {
+            $message->to($data['email']);
+            $message->from('info@beyahfitness.com');
+            $message->subject('Forget Password Request');
+        });
+
+        $res['status'] = True;
+        $res['message'] = "Email has been send to your provided email with new password";
+        return response($res, 500);
+    }
+
+    function randomPassword($length) {
+        $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        return substr(str_shuffle($chars),0,$length);
     }
 }

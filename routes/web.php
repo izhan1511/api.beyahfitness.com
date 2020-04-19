@@ -18,6 +18,8 @@ $router->post('/login', 'LoginController@login');
 $router->post('/register', 'UserController@register');
 $router->get('/user', ['middleware' => 'auth', 'uses' =>  'UserController@get_user']);
 
+$router->post('/forget', 'LoginController@forget');
+
 $router->post('/password/reset-request', 'RequestPasswordController@sendResetLinkEmail');
 $router->post('/password/reset', [ 'as' => 'password.reset', 'uses' => 'ResetPasswordController@reset' ]);
 
