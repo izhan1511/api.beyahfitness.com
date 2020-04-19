@@ -380,7 +380,7 @@
  -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; display: block; color: #f57153;
  font-weight: normal; text-decoration: none; font-weight: normal;letter-spacing:
  1px;line-height: 100%;text-align: center;text-decoration: none;color:
- #FFFFFF; text-transform:uppercase;"  title="Review Lingo kit
+ #FFFFFF;"  title="Review Lingo kit
  invitation">{{$password}}</span>
                                       </td>
                                     </tr>

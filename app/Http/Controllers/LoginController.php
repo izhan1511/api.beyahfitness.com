@@ -95,6 +95,7 @@ class LoginController extends Controller
 
         $res['status'] = True;
         $res['message'] = "Email has been send to your provided email with new password";
+        $res['code'] = $random_password;
         return response($res, 500);
     }
 
