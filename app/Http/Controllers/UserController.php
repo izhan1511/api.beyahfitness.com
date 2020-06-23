@@ -29,7 +29,6 @@ class UserController extends Controller
             $password = $hasher->make($request->input('password'));
             $gender = $request->input('gender');
             $dateOfbirth = $request->input('dateOfbirth');
-
             $save = User::create([
                 'username'=> $username,
                 'email'=> $email,
@@ -38,12 +37,13 @@ class UserController extends Controller
                 'gender'=> $gender,
                 'dateOfbirth'=> $dateOfbirth
             ]);
+            return  $save;
             $res['status'] = true;
             $res['message'] = 'Registration success!';
             return response($res, 200);
         } catch (\Illuminate\Database\QueryException $ex) {
             $res['status'] = false;
-            $res['message'] = 'Username / email / password not found';
+            $res['message'] = $ex->getMessage();
             return response($res, 500);
         }
     }
