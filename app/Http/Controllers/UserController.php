@@ -29,7 +29,7 @@ class UserController extends Controller
             $password = $hasher->make($request->input('password'));
             $gender = $request->input('gender');
             $dateOfbirth = $request->input('dateOfbirth');
-            $save = User::create([
+            $save = User::firstOrNew([
                 'username'=> $username,
                 'email'=> $email,
                 'password'=> $password,
@@ -37,10 +37,16 @@ class UserController extends Controller
                 'gender'=> $gender,
                 'dateOfbirth'=> $dateOfbirth
             ]);
-            return  $save;
-            $res['status'] = true;
-            $res['message'] = 'Registration success!';
-            return response($res, 200);
+            if($save){
+                $res['status'] = true;
+                $res['message'] = 'Registration success!';
+                return response($res, 200);
+            }else{
+                $res['status'] = true;
+                $res['message'] = 'Registered Already!';
+                return response($res, 500);
+            }
+
         } catch (\Illuminate\Database\QueryException $ex) {
             $res['status'] = false;
             $res['message'] = $ex->getMessage();
