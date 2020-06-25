@@ -29,7 +29,12 @@ class UserController extends Controller
             $password = $hasher->make($request->input('password'));
             $gender = $request->input('gender');
             $dateOfbirth = $request->input('dateOfbirth');
-            $save = User::firstOrNew([
+            if (User::where('email', '=', $email)->count() > 0) {
+                $res['status'] = true;
+                $res['message'] = 'Error : User email exists';
+                return response($res, 500);
+             }
+            $save = User::create([
                 'username'=> $username,
                 'email'=> $email,
                 'password'=> $password,
