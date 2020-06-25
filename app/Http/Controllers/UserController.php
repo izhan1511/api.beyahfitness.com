@@ -42,15 +42,9 @@ class UserController extends Controller
                 'gender'=> $gender,
                 'dateOfbirth'=> $dateOfbirth
             ]);
-            if($save){
-                $res['status'] = true;
-                $res['message'] = 'Registration success!';
-                return response($res, 200);
-            }else{
-                $res['status'] = true;
-                $res['message'] = 'Registered Already!';
-                return response($res, 500);
-            }
+            $res['status'] = true;
+            $res['message'] = 'Registration success!';
+            return response($res, 200);
 
         } catch (\Illuminate\Database\QueryException $ex) {
             $res['status'] = false;
