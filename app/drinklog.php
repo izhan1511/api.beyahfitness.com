@@ -11,7 +11,7 @@ use Laravel\Lumen\Auth\Authorizable;
 class drinklog extends Model implements AuthenticatableContract, AuthorizableContract
 {
     use Authenticatable, Authorizable;
-    protected $table = 'drink_logs';
+    protected $table = 'drinklogs';
 
     /**
      * The attributes that are mass assignable.
