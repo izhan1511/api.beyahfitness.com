@@ -83,7 +83,6 @@ class workoutController extends Controller
     }
 
     public function drinkLogs(request $request){
-        return drinklog::create($request->all());
         return response()->json([
             'success'=>true,
             'message'=> drinklog::create($request->all())
