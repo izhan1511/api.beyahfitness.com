@@ -71,7 +71,6 @@ class LoginController extends Controller
     public function forget(Request $request){
         $data=$request->all();
         $userDetails = User::where('email', $data['email'])->first();
-        dd($userDetails);
         if($userDetails == null){
             $res['status'] = false;
             $res['message'] = "Email doesn't Exist";
