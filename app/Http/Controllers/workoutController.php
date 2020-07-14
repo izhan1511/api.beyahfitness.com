@@ -83,10 +83,18 @@ class workoutController extends Controller
     }
 
     public function drinkLogs(request $request){
-        return response()->json([
-            'success'=>true,
-            'message'=> drinklog::create($request->all())
-        ]);
+
+        try {
+            drinklog::create($request->all());
+        } catch (\Illuminate\Database\QueryException $exception) {
+            // You can check get the details of the error using `errorInfo`:
+            return response()->json([
+                'success'=>false,
+                'message'=> $exception->errorInfo
+            ]);
+
+            // Return the response to the client..
+        }
     }
 
     public function drinkUsrLogs(request $request){
