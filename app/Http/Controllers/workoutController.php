@@ -98,10 +98,11 @@ class workoutController extends Controller
     }
 
     public function drinkUsrLogs(request $request){
-        return response()->json([
-            'success'=>true,
-            'message'=> drinklog::where('userId',$request->id)->get()
-        ]);
+        return drinklog::where('userId',$request->id)->get();
+        // return response()->json([
+        //     'success'=>true,
+        //     'message'=> drinklog::where('userId',$request->id)->get()
+        // ]);
     }
 
     //
