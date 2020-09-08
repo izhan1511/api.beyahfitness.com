@@ -15,7 +15,8 @@ class WorkoutLogs extends Migration
     {
         Schema::create('workoutLogs', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('userId');
+            $table->integer('userId')->unsigned();
+            $table->foreign('userId')->references('id')->on('users')->onDelete('cascade');
             $table->integer('workoutvideoId');
             $table->timestamps();
         });

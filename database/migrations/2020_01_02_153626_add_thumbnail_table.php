@@ -13,7 +13,7 @@ class AddThumbnailTable extends Migration
      */
     public function up()
     {
-        Schema::table('workoutcategories', function (Blueprint $table) {
+        Schema::table('workoutCategories', function (Blueprint $table) {
             $table->string('thumbnail');
             $table->string('duration');
         });

@@ -16,7 +16,8 @@ class WorkoutVideos extends Migration
         Schema::create('WorkoutVideos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->string('categoryId');
+            $table->integer('categoryId')->unsigned();
+            $table->foreign('categoryId')->references('id')->on('workoutCategories')->onDelete('cascade');
             $table->string('duration');
             $table->string('thumbnail');
             $table->string('video_url');

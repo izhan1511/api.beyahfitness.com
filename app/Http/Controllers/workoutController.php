@@ -6,6 +6,8 @@ use App\workoutcategory;
 use App\workoutLog;
 use App\drinklog;
 use Illuminate\Http\Request;
+use App\User;
+
 
 class workoutController extends Controller
 {
@@ -76,9 +78,11 @@ class workoutController extends Controller
     }
 
     public function wvgetlogs(request $request){
+        $api = $request;
+        $user = User::where('api_token',$api['api_token'])->first();
         return response()->json([
             'success'=>true,
-            'message'=> workoutLog::where('userId',$request->id)->with('mv')->get()
+            'message'=> workoutLog::where('userId',$user->id)->with('mv')->get()
         ]);
     }
 
@@ -97,8 +101,10 @@ class workoutController extends Controller
         }
     }
 
-    public function drinkUsrLogs(request $request){
-        return drinklog::where('userId',$request->id)->get();
+    public function drinkUsrLogs(Request $request){
+        $api = $request;
+        $user = User::where('api_token',$api['api_token'])->first();
+        return drinklog::where('userId',$user->id)->get();
         // return response()->json([
         //     'success'=>true,
         //     'message'=> drinklog::where('userId',$request->id)->get()

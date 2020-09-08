@@ -32,7 +32,7 @@ class LoginController extends Controller
                         try {
                             $api_token = sha1($login->id_user.time());
 
-                              $create_token = User::where('id', $login->id_user)->update(['api_token' => $api_token]);
+                              User::where('id', $login->id)->update(['api_token' => $api_token]);
                               $res['status'] = true;
                               $res['message'] = 'Success login';
                               $res['data'] =  $login;
@@ -69,6 +69,7 @@ class LoginController extends Controller
     }
 
     public function forget(Request $request){
+        
         $data=$request->all();
         $userDetails = User::where('email', $data['email'])->first();
         if($userDetails == null){
@@ -78,14 +79,14 @@ class LoginController extends Controller
         }
         $hasher = app()->make('hash');
         $random_password = $this->randomPassword(6);
-        $new_password = $hasher->make($random_password);
-        User::where('email', $data['email'])->update(['password'=>$new_password]);
+        $new_pass = $hasher->make($random_password);
+        User::where('email', $data['email'])->update(['password'=>$new_pass]);
         $data = array(
                 'email'=> $userDetails->email,
                 'name'=> $userDetails->name,
                 'password' => $random_password
         );
-
+        // dd($data);
         Mail::send('auth.emails.forget', $data, function($message) use($data) {
             $message->to($data['email']);
             $message->from('info@beyahfitness.com');

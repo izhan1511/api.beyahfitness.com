@@ -15,7 +15,8 @@ class DrinkLogs extends Migration
     {
         Schema::create('drinkLogs', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('userId');
+            $table->integer('userId')->unsigned();
+            $table->foreign('userId')->references('id')->on('users')->onDelete('cascade');
             $table->string('title');
             $table->string('category');
             $table->string('drinkTarget');

@@ -53,9 +53,10 @@ class UserController extends Controller
         }
     }
 
-    public function get_user()
+    public function get_user(Request $request)
     {
-        $user = User::all();
+        $api = $request;
+        $user = User::where('api_token',$api['api_token'])->first();
         if ($user) {
               $res['status'] = true;
               $res['message'] = $user;
