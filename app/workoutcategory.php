@@ -11,14 +11,14 @@ use Laravel\Lumen\Auth\Authorizable;
 class workoutcategory extends Model implements AuthenticatableContract, AuthorizableContract
 {
     use Authenticatable, Authorizable;
-    // protected $table = 'user_views';
+    protected $table = 'workout_categories';
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'id','mainTitle','category','created_at','updated_at'
+        'id','mainTitle','category','created_at','updated_at','duration','thumbnail'
     ];
 
 }

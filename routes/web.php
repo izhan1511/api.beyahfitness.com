@@ -44,7 +44,7 @@ $router->group(['middleware' => 'auth', 'uses' =>  'UserController@get_user'], f
     $router->get('wvgetlogs','workoutController@wvgetlogs');
 
     // Drink Logs
-    $router->post('drinkLogs','workoutContro ller@drinkLogs');
+    $router->post('drinkLogs','workoutController@drinkLogs');
     $router->get('drinkUsrLogs','workoutController@drinkUsrLogs');
     
     $router->get('logout','UserController@logout');

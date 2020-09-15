@@ -11,7 +11,7 @@ use Laravel\Lumen\Auth\Authorizable;
 class workoutvideo extends Model implements AuthenticatableContract, AuthorizableContract
 {
     use Authenticatable, Authorizable;
-    // protected $table = 'user_views';
+    protected $table = 'workout_videos';
     /**
      * The attributes that are mass assignable.
      *

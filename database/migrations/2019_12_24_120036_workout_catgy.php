@@ -13,7 +13,7 @@ class WorkoutCatgy extends Migration
      */
     public function up()
     {
-        Schema::create('workoutCategories', function (Blueprint $table) {
+        Schema::create('workout_categories', function (Blueprint $table) {
             $table->increments('id');
             $table->string('mainTitle');
             $table->string('category');

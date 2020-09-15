@@ -13,7 +13,7 @@ class WorkoutLogs extends Migration
      */
     public function up()
     {
-        Schema::create('workoutLogs', function (Blueprint $table) {
+        Schema::create('workout_logs', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('userId')->unsigned();
             $table->foreign('userId')->references('id')->on('users')->onDelete('cascade');

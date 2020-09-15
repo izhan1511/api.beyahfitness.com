@@ -13,11 +13,11 @@ class WorkoutVideos extends Migration
      */
     public function up()
     {
-        Schema::create('WorkoutVideos', function (Blueprint $table) {
+        Schema::create('workout_videos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
             $table->integer('categoryId')->unsigned();
-            $table->foreign('categoryId')->references('id')->on('workoutCategories')->onDelete('cascade');
+            $table->foreign('categoryId')->references('id')->on('workout_categories')->onDelete('cascade');
             $table->string('duration');
             $table->string('thumbnail');
             $table->string('video_url');
