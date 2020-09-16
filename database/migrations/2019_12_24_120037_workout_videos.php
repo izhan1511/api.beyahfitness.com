@@ -33,6 +33,6 @@ class WorkoutVideos extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('WorkoutVideos');
+        Schema::dropIfExists('workout_videos');
     }
 }

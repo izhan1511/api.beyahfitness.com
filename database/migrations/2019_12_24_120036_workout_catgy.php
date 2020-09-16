@@ -28,6 +28,6 @@ class WorkoutCatgy extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('workoutCategories');
+        Schema::dropIfExists('workout_categories');
     }
 }

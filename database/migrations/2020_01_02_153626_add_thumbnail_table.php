@@ -15,7 +15,7 @@ class AddThumbnailTable extends Migration
     {
         Schema::table('workout_categories', function (Blueprint $table) {
             $table->string('thumbnail');
-            $table->string('duration');
+            $table->time('duration');
         });
     }
 
@@ -26,7 +26,7 @@ class AddThumbnailTable extends Migration
      */
     public function down()
     {
-        Schema::table('workoutcategories', function (Blueprint $table) {
+        Schema::table('workout_categories', function (Blueprint $table) {
             $table->dropColumn('thumbnail');
             $table->dropColumn('duration');
         });

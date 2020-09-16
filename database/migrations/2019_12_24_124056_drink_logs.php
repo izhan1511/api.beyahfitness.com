@@ -33,6 +33,6 @@ class DrinkLogs extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('drinkLogs');
+        Schema::dropIfExists('drink_logs');
     }
 }
