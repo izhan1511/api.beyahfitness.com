@@ -104,12 +104,9 @@ class workoutController extends Controller
     public function drinkUsrLogs(Request $request){
         $api = $request;
         $user = User::where('api_token',$api['api_token'])->first();
-        return drinklog::where('userId',$user->id)->get();
-        // return response()->json([
-        //     'success'=>true,
-        //     'message'=> drinklog::where('userId',$request->id)->get()
-        // ]);
+        return response()->json([
+            'success'=>true,
+            'message'=> drinklog::where('userId',$request->id)->get()
+        ]);
     }
-
-    //
 }
