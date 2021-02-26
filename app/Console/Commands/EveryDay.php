@@ -40,7 +40,7 @@ class EveryDay extends Command
     public function handle()
     {
         $firebaseToken = User::whereNotNull('firebase_token')->pluck('firebase_token')->all();
-        $SERVER_API_KEY = 'AIzaSyCFr8IQmgMZc1rxDXDD-NUR0SYtojM72m4';
+        $SERVER_API_KEY = config('services.firebase.key');
         $data = [
             "registration_ids" => $firebaseToken,
             "notification" => [
