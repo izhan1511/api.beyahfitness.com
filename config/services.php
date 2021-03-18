@@ -29,5 +29,8 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
+    'firebase' => [
+        'key'  => 'AIzaSyCFr8IQmgMZc1rxDXDD-NUR0SYtojM72m4',
+    ]
 
 ];

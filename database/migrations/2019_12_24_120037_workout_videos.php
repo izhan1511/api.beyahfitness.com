@@ -18,7 +18,7 @@ class WorkoutVideos extends Migration
             $table->string('title');
             $table->integer('categoryId')->unsigned();
             $table->foreign('categoryId')->references('id')->on('workout_categories')->onDelete('cascade');
-            $table->string('duration');
+            $table->time('duration');
             $table->string('thumbnail');
             $table->string('video_url');
             $table->timestamps();
