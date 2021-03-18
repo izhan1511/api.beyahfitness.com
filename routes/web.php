@@ -18,6 +18,8 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+$router->get('/test', 'ExampleController@test');
+
 $router->post('/login', 'LoginController@login');
 $router->post('/register', 'UserController@register');
 $router->get('/user', ['middleware' => 'auth', 'uses' => 'UserController@get_user']);

@@ -30,7 +30,7 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
     'firebase' => [
-        'key'  => 'AIzaSyCFr8IQmgMZc1rxDXDD-NUR0SYtojM72m4',
+        'key'  => 'AAAAIb7LPYo:APA91bECopZv_noWFJYZRhSW8tHwbE_rYLH4aJGNUM0itsLmuAMR1RTg98PENa8-xTNY4gfnkOFdeCOowzkibuJBmT9ZRmacskHu3KfLqPXUUb7otIoR3Gt2XGlFib54LxhVr-Lkc07y',
     ]
 
 ];

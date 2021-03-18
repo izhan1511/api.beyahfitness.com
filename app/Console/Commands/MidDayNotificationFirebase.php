@@ -1,30 +1,51 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Console\Commands;
+
 use App\User;
+use Illuminate\Console\Command;
 use Log;
-class ExampleController extends Controller
+
+class MidDayNotificationFirebase extends Command
 {
     /**
-     * Create a new controller instance.
+     * The name and signature of the console command.
+     *
+     * @var string
+     */
+    protected $signature = 'midday:notification';
+
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
+    protected $description = 'Send notification after six hours to users';
+
+    /**
+     * Create a new command instance.
      *
      * @return void
      */
     public function __construct()
     {
-        //
+        parent::__construct();
     }
 
-    public function test()
+    /**
+     * Execute the console command.
+     *
+     * @return mixed
+     */
+    public function handle()
     {
         $firebaseToken = User::whereNotNull('firebase_token')->pluck('firebase_token')->all();
         $SERVER_API_KEY = config('services.firebase.key');
-        // dd($SERVER_API_KEY);
         $data = [
             "registration_ids" => $firebaseToken,
             "notification" => [
-                "title" => "Set Drink Target",
-                "body" => "Its time to set your daily water drink target.",
+                "title" => "Forget to drink ?",
+                "body" => "Its time to keep your self Hydrate",
                 "screen" => "dashboard",
             ],
         ];
@@ -43,6 +64,4 @@ class ExampleController extends Controller
         $response = curl_exec($ch);
         Log::error($response);
     }
-
-    //
 }

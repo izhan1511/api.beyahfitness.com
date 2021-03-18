@@ -13,7 +13,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        Commands\EveryDay::class,
+        Commands\DailyNotificationFirebase::class,
+        Commands\MidDayNotificationFirebase::class,
     ];
 
     /**
@@ -24,7 +25,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('every:day')->daily();
+        $schedule->command('daily:notification')->daily();
+        $schedule->command('midday:notification')->twiceDaily(10, 18);	
     }
     protected function commands()
     {

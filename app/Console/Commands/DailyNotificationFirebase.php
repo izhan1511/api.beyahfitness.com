@@ -6,14 +6,14 @@ use App\User;
 use Illuminate\Console\Command;
 use Log;
 
-class EveryDay extends Command
+class DailyNotificationFirebase extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'every:day';
+    protected $signature = 'daily:notification';
 
     /**
      * The console command description.
@@ -44,8 +44,9 @@ class EveryDay extends Command
         $data = [
             "registration_ids" => $firebaseToken,
             "notification" => [
-                "title" => "Notification Title",
-                "body" => "Notifcation Body",
+                "title" => "Set Drink Target",
+                "body" => "Its time to set your daily water drink target.",
+                "screen" => "dashboard",
             ],
         ];
         $dataString = json_encode($data);
