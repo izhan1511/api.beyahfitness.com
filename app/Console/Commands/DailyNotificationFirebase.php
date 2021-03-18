@@ -48,6 +48,12 @@ class DailyNotificationFirebase extends Command
                 "body" => "Its time to set your daily water drink target.",
                 "screen" => "dashboard",
             ],
+            "data" => [
+                "title"=> "Set Drink Target",
+                "body"=> "Its time to set your daily water drink target.", 
+                "screen" => "dashboard",
+                //you can get this data as extras in your activity and this data is optional
+            ],
         ];
         $dataString = json_encode($data);
         $headers = [
